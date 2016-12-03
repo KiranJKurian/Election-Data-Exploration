@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 // const App = () => (<h1>Hello</h1>);
 function App() {
-  return (<h1>Hello</h1>);
+  return (<h1>Hello World</h1>);
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
