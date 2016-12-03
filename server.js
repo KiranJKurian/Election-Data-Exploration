@@ -10,12 +10,13 @@ var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: '',
-	database: 'mydb',     
+	database: 'Elections',
 });
 
 connection.connect(function(err){
 	if(err){
 		console.log("Error connecting to db");
+    console.log(err);
 		return;
 	}
 	else
@@ -25,7 +26,7 @@ connection.connect(function(err){
 connection.end();
 /*******ROUTES*******/
 app.get('/', function(req,res){
-	res.redirect('/home');
+	res.sendFile(__dirname + "/assets/views/app.html");
 });
 
 app.get('/home', function(req, res){
