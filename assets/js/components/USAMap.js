@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactHighmaps from 'react-highcharts/ReactHighmaps';
-import USAMapData from '../mapData/us-all';
-import USAData from '../mapData/us-data';
+import USAMapData from '../data/us-all';
+import USAData from '../data/us-data';
 
 const USAMap = (props) => {
   const data = USAData;

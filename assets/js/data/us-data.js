@@ -207,6 +207,8 @@ let random = [
     "value": 51
   }
 ];
+
+
 random = random.filter((state) => (typeof state['hc-key'] !== 'undefined'))
   .map((state, index) => ({ "hc-key": state['hc-key'], value: state['value'] < 30 ? 1 : 0, 'name': index > 30 ? 'Clinton' : 'Trump', 'postal-code': state['hc-key'].substring(3).toUpperCase() }))
 export default random;
