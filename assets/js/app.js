@@ -1,11 +1,14 @@
-// import Hello from './hello.js';
-// import World from './world.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import USAMap from './components/USAMap';
 
-// const App = () => (<h1>Hello</h1>);
-function App() {
-  return (<h1>Hello World</h1>);
-}
+const App = () => {
+  return (
+    <div>
+      <h1>Hello World</h1>
+      <USAMap />
+    </div>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));

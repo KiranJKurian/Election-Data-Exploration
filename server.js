@@ -29,14 +29,12 @@ app.get('/', function(req,res){
 	res.sendFile(__dirname + "/assets/views/app.html");
 });
 
-app.get('/home', function(req, res){
-	res.sendFile(__dirname + "/assets/views/home.html");
-});
-
 app.get('/bundle.js', function(req, res){
 	res.sendFile(__dirname + "/assets/js/bundle.js")
 });
 
 
 /*******START SERVER*******/
-app.listen(8080 || process.env.port);
+app.listen((8080 || process.env.port), function() {
+  console.info('Express server started at http://localhost:' + (8080 || process.env.port));
+});
