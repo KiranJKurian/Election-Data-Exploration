@@ -40,8 +40,9 @@ const USAMap = (props) => {
    plotOptions: {
       map: {
          tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><br/>',
             pointFormatter: function () {
-                return `${this.name}: ${this.value < 0.2 ? 'Trump' : 'Clinton'}`;
+                return `${this.value < 0.2 ? 'Trump' : 'Clinton'}<br/>`;
             }
          }
       }
