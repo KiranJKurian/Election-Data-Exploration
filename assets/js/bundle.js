@@ -38644,11 +38644,20 @@
 	  value: true
 	});
 	exports.submitStateAnalysisNormalQuery = submitStateAnalysisNormalQuery;
+	exports.submitStateAnalysisCustomQuery = submitStateAnalysisCustomQuery;
 	var SUBMIT_STATE_ANALYSIS_NORMAL_QUERY = exports.SUBMIT_STATE_ANALYSIS_NORMAL_QUERY = 'SUBMIT_STATE_ANALYSIS_NORMAL_QUERY';
+	var SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY = exports.SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY = 'SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY';
 
 	function submitStateAnalysisNormalQuery(value) {
 	  return {
 	    type: SUBMIT_STATE_ANALYSIS_NORMAL_QUERY,
+	    value: value
+	  };
+	}
+
+	function submitStateAnalysisCustomQuery(value) {
+	  return {
+	    type: SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY,
 	    value: value
 	  };
 	}
@@ -38689,6 +38698,10 @@
 
 	var _SelectField2 = _interopRequireDefault(_SelectField);
 
+	var _NumberField = __webpack_require__(698);
+
+	var _NumberField2 = _interopRequireDefault(_NumberField);
+
 	var _election_config = __webpack_require__(697);
 
 	var _election_config2 = _interopRequireDefault(_election_config);
@@ -38703,26 +38716,27 @@
 	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery;
 
 	  var colNames = _election_config2.default.state_info.column_names;
-	  var onNormalSubmit = function onNormalSubmit() {
+
+	  var normalData = normal.input && { 'type': 'stateAnalysisNormal', 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute };
+	  var customData = custom.input && { 'type': 'stateAnalysisCustom', 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number };
+
+	  var submit = function submit(data) {
 	    return _jquery2.default.ajax({
-	      url: "/dropDown",
-	      data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
-	      method: "GET"
+	      url: "/query",
+	      data: JSON.stringify(data),
+	      contentType: 'application/json',
+	      method: "POST"
 	    }).done(function (data) {
 	      console.log(data);
 	      submitStateAnalysisNormalQuery(JSON.parse(data)[0].State);
 	    });
 	  };
+	  var onNormalSubmit = function onNormalSubmit() {
+	    return submit(normalData);
+	  };
 
 	  var onCustomSubmit = function onCustomSubmit() {
-	    return _jquery2.default.ajax({
-	      url: "/poll1",
-	      data: { 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number },
-	      method: "GET"
-	    }).done(function (data) {
-	      console.log(data);
-	      submitStateAnalysisNormalQuery(JSON.parse(data)[0].State);
-	    });
+	    return submit(customData);
 	  };
 
 	  console.log(normal.result);
@@ -38802,9 +38816,9 @@
 	            }) }),
 	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Less/Greater', options: ['less', 'greater'] }),
 	          'than',
-	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Number', options: [1, 2, 3] }),
+	          _react2.default.createElement(_NumberField2.default, { location: 'custom', question: 'Number' }),
 	          'and the winning party was',
-	          _react2.default.createElement(_SelectField2.default, { location: 'customer', question: 'Party', options: ["Dem", "GOP", "Ind"] })
+	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Party', options: ["Dem", "GOP", "Ind"] })
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -38833,7 +38847,7 @@
 	    },
 	    custom: {
 	      Year: 2016,
-	      'High/Low': 'lowest',
+	      'Less/Greater': 'less',
 	      'Attribute': 'Population_estimate_2014',
 	      'Party': 'Dem',
 	      'Number': 1
@@ -38855,7 +38869,7 @@
 	      result: state.stateAnalysis.custom && state.stateAnalysis.custom.result,
 	      input: state.form.stateAnalysis && {
 	        year: state.form.stateAnalysis.values.custom.Year,
-	        highLow: state.form.stateAnalysis.values.custom['High/Low'],
+	        highLow: state.form.stateAnalysis.values.custom['Less/Greater'],
 	        attribute: state.form.stateAnalysis.values.custom.Attribute,
 	        party: state.form.stateAnalysis.values.custom.Party,
 	        number: state.form.stateAnalysis.values.custom.Number
@@ -72303,6 +72317,44 @@
 	    }]
 	  }
 	};
+
+/***/ },
+/* 698 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(158);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _MenuItem = __webpack_require__(591);
+
+	var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+	var _reduxForm = __webpack_require__(343);
+
+	var _reduxFormMaterialUi = __webpack_require__(613);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NumberField = function NumberField(_ref) {
+	  var question = _ref.question,
+	      location = _ref.location,
+	      options = _ref.options;
+
+	  return _react2.default.createElement(_reduxForm.Field, { style: { marginLeft: '.5em', marginRight: '.5em' }, name: location ? location + '.' + question : question, type: 'number', component: _reduxFormMaterialUi.TextField, hintText: question });
+	};
+
+	exports.default = NumberField;
 
 /***/ }
 /******/ ]);

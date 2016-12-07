@@ -6,29 +6,30 @@ import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import $ from "jquery";
 import SelectField from './SelectField';
+import NumberField from './NumberField';
 import electionConfig from '../data/election_config';
 import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 
 let StateAnalysis = (props) => {
   const { normal, custom, submitStateAnalysisNormalQuery } = props;
   const colNames = electionConfig.state_info.column_names;
-  const onNormalSubmit = () => $.ajax({
-      url: "/dropDown",
-      data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
-      method: "GET",
-    }).done(function (data) {
-      console.log(data);
-      submitStateAnalysisNormalQuery( JSON.parse(data)[0].State );
-  });
 
-  const onCustomSubmit = () => $.ajax({
-      url: "/poll1",
-      data: { 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number },
-      method: "GET",
+  const normalData = normal.input && { 'type': 'stateAnalysisNormal', 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute };
+  const customData = custom.input && { 'type': 'stateAnalysisCustom', 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number };
+
+  const submit = (data) => $.ajax({
+      url: "/query",
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      method: "POST",
     }).done(function (data) {
       console.log(data);
       submitStateAnalysisNormalQuery( JSON.parse(data)[0].State );
   });
+  const onNormalSubmit = () => submit(normalData);
+
+
+  const onCustomSubmit = () => submit(customData);
 
   console.log(normal.result);
   return (
@@ -65,9 +66,9 @@ let StateAnalysis = (props) => {
               .map( ({name}) => name) } />
             <SelectField location="custom" question="Less/Greater" options={['less', 'greater']} />
             than
-            <SelectField location="custom" question="Number" options={[1,2,3]} />
+            <NumberField location="custom" question="Number" />
             and the winning party was
-            <SelectField location="customer" question="Party" options={["Dem", "GOP", "Ind"]} />
+            <SelectField location="custom" question="Party" options={["Dem", "GOP", "Ind"]} />
           </article>
         </CardText>
         <CardActions>
@@ -90,7 +91,7 @@ StateAnalysis = reduxForm({
     },
     custom: {
       Year: 2016,
-      'High/Low': 'lowest',
+      'Less/Greater': 'less',
       'Attribute': 'Population_estimate_2014',
       'Party': 'Dem',
       'Number': 1,
@@ -112,7 +113,7 @@ const mapStateToProps = (state, ownProps) => {
       result: state.stateAnalysis.custom && state.stateAnalysis.custom.result,
       input: state.form.stateAnalysis && {
         year: state.form.stateAnalysis.values.custom.Year,
-        highLow: state.form.stateAnalysis.values.custom['High/Low'],
+        highLow: state.form.stateAnalysis.values.custom['Less/Greater'],
         attribute: state.form.stateAnalysis.values.custom.Attribute,
         party: state.form.stateAnalysis.values.custom.Party,
         number: state.form.stateAnalysis.values.custom.Number,
