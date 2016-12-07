@@ -1,39 +1,27 @@
 "use strict";
-var http = require('http');
-var express = require('express');
-var mysql = require('mysql');
-var bodyParser = require('body-parser');
-//var queries = require('./assets/js/queries.js');
-var app = express();
-
-app.use( bodyParser.urlencoded( {
-    extended: true
-} ) );
-
-app.use( bodyParser.json() );
-
-app.use('/assets', express.static('assets'));
+import mysql from 'mysql';
 
 /*******DB CONNECTION *******/
-var connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: 'root',
-	database: 'election_data',
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'election_data',
 });
 
 connection.connect(function(err){
-	if(err){
-		console.log("Error connecting to db");
-    	console.log(err);
-		return;
-	}
-	else
-		console.log("Connected to db");
+  if(err){
+    console.log("Error connecting to db");
+      console.log(err);
+    return;
+  }
+  else
+    console.log("Connected to db");
 
 });
 
 // connection.end();
+
 
 /*******QUERIES*******/
 
@@ -52,7 +40,7 @@ const wrapSpecial = (str) => {
   return specialExp.test(str) ? '`'+str+'`' : str
 }
 
-const runQuery = (query, res) => {
+export const runQuery = (query, res) => {
   connection.query(query, function(err, result){
     if(err){
       console.log(err);
@@ -65,7 +53,7 @@ const runQuery = (query, res) => {
   });
 };
 
-const getStateAnalysisNormalQuery = (body) => {
+export const getStateAnalysisNormalQuery = (body) => {
   let table;
   let year = body.year, highlow = body.highlow, attribute = body.attribute;
 
@@ -87,7 +75,7 @@ const getStateAnalysisNormalQuery = (body) => {
   return query;
 };
 
-const getStateAnalysisCustomQuery = (body) => {
+export const getStateAnalysisCustomQuery = (body) => {
   let table;
   let year = body.year, highlow = body.highlow, attribute = body.attribute, party = body.party, number = body.number;
 
@@ -119,41 +107,3 @@ const getStateAnalysisCustomQuery = (body) => {
   console.log(query);
   return query;
 };
-
-
-/*******ROUTES*******/
-app.get('/', function(req,res){
-	res.sendFile(__dirname + "/assets/views/app.html");
-});
-
-app.post('/query', function(req, res){
-  const body = req.body;
-  try {
-    let query = "";
-    switch(body.type) {
-      case 'stateAnalysisNormal':
-        query = getStateAnalysisNormalQuery(body);
-        break;
-      case 'stateAnalysisCustom':
-        query = getStateAnalysisCustomQuery(body);
-        break;
-    }
-    runQuery( query, res );
-  }
-  catch(err) {
-    console.log(err);
-    res.send(req.body);
-  }
-});
-
-
-app.get('/bundle.js', function(req, res){
-	res.sendFile(__dirname + "/assets/js/bundle.js")
-});
-
-
-
-/*******START SERVER*******/
-app.listen((8080 || process.env.port), function() {
-  console.info('Express server started at http://localhost:' + (8080 || process.env.port));
-});
