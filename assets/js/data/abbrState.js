@@ -54,8 +54,10 @@ export default function abbrState(input, to){
         ['Wisconsin', 'WI'],
         ['Wyoming', 'WY'],
     ];
-
     if (to == 'abbr'){
+        if(input == 'District of Columbia'){
+            return 'DC';
+        }
         input = input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
         for(i = 0; i < states.length; i++){
             if(states[i][0] == input){
@@ -63,6 +65,9 @@ export default function abbrState(input, to){
             }
         }
     } else if (to == 'name'){
+        if(input == 'DC'){
+            return 'District of Columbia';
+        }
         input = input.toUpperCase();
         for(i = 0; i < states.length; i++){
             if(states[i][1] == input){
