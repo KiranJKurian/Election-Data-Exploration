@@ -31,7 +31,34 @@ app.get('/', function(req,res){
 	res.sendFile(__dirname + "/assets/views/app.html");
 });
 
-
+app.get('/dropDown', function(req, res){
+	var table;
+	if(req.year == 2016){
+		table = 'states_dem_2016';
+	}
+	else{
+		table = 'race_demographics';
+	}
+	var query = "SELECT State FROM "+mysql.escape(table)+" ORDER BY "+mysql.escape(req.attribute);
+	if(req.highlow == "lowest"){
+		query += "ASC LIMIT 1";
+	}
+	else{
+		query += "DESC LIMIT 1";
+	}
+	connection.query(query, function(err, result){
+		if(err){
+			console.log(err);
+			throw err;
+		}
+		else{
+			console.log(result);
+			res.send(JSON.stringify(result));
+		}
+	});
+	connection.end();
+}
+});
 
 
 app.get('/bundle.js', function(req, res){
