@@ -3,7 +3,7 @@ var http = require('http');
 var express = require('express');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-var queries = require('./assets/js/queries.js');
+//var queries = require('./assets/js/queries.js');
 var app = express();
 
 app.use( bodyParser.urlencoded( {
