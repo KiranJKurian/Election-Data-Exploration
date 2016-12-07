@@ -37,8 +37,8 @@ const stripQuote = (str) => {
   return str;
 }
 app.get('/dropDown', function(req, res){
-  console.log("Req Query:");
-  console.log(req.query);
+  // console.log("Req Query:");
+  // console.log(req.query);
   var table;
 	if(req.query.year == 2016){
 		table = 'states_dem_2016';
@@ -66,7 +66,7 @@ app.get('/dropDown', function(req, res){
 	// connection.end();
 });
 
-// Input: { year, attribute, highlow, party }
+// Input: { year, attribute, highlow, party, number }
 // Output: [{ State1 }, { State2 }]
 app.get('/poll1', function(req, res){
 	var table;
