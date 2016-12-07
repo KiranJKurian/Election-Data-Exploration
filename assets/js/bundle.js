@@ -38706,13 +38706,21 @@
 	  // formData.append('highlow', 'lowest');
 	  // formData.append('attribute', 'Population_2010');
 
-	  var formData = { year: 2016, highlow: 'lowest', attribute: 'Population_2010' };
-	  console.log(formData);
+	  var settings = {
+	    "async": true,
+	    "crossDomain": true,
+	    "url": "http://localhost:8080/dropDown?year=2016&highlow=lowest&attribute=Population_2010",
+	    "method": "GET",
+	    "headers": {
+	      "cache-control": "no-cache",
+	      "postman-token": "85a369cc-5272-ebd5-ab3b-3221614d907c"
+	    }
+	  };
+
+	  // console.log(formData);
 	  var onSubmit = function onSubmit() {
-	    return _jquery2.default.ajax({
-	      url: '/test',
-	      data: JSON.stringify({ str: 'Idk Whats Rc' }),
-	      type: 'POST'
+	    return _jquery2.default.ajax(settings).done(function (response) {
+	      console.log(response);
 	    });
 	  };
 	  console.log(normal.result);
