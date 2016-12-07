@@ -30,7 +30,12 @@ connection.connect(function(err){
 app.get('/', function(req,res){
 	res.sendFile(__dirname + "/assets/views/app.html");
 });
-
+const stripQuote = (str) => {
+  if(str[0] == "'" && str[str.length-1] == "'"){
+    str = str.substring(1, str.length-1);
+  }
+  return str;
+}
 app.get('/dropDown', function(req, res){
   console.log("Req Query:");
   console.log(req.query);
@@ -41,12 +46,12 @@ app.get('/dropDown', function(req, res){
 	else{
 		table = 'race_demographics';
 	}
-	var query = "SELECT State FROM "+mysql.escape(table)+" ORDER BY "+mysql.escape(req.query.attribute);
+	var query = "SELECT State FROM "+stripQuote(mysql.escape(table))+" ORDER BY "+stripQuote(mysql.escape(req.query.attribute));
 	if(req.query.highlow == "lowest"){
-		query += "ASC LIMIT 1";
+		query += " ASC LIMIT 1";
 	}
 	else{
-		query += "DESC LIMIT 1";
+		query += " DESC LIMIT 1";
 	}
 	connection.query(query, function(err, result){
 		if(err){
@@ -58,7 +63,7 @@ app.get('/dropDown', function(req, res){
 			res.send(JSON.stringify(result));
 		}
 	});
-	connection.end();
+	// connection.end();
 });
 
 

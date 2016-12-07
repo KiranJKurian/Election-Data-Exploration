@@ -12,26 +12,15 @@ import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 let StateAnalysis = (props) => {
   const { normal, submitStateAnalysisNormalQuery } = props;
   // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
-  // let formData = new FormData();
-  // formData.append('year', 2016);
-  // formData.append('highlow', 'lowest');
-  // formData.append('attribute', 'Population_2010');
-  var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://localhost:8080/dropDown?year=2016&highlow=lowest&attribute=Population_2010",
-  "method": "GET",
-  "headers": {
-    "cache-control": "no-cache",
-    "postman-token": "85a369cc-5272-ebd5-ab3b-3221614d907c"
-  }
-}
+  const onSubmit = () => $.ajax({
+      url: "/dropDown",
+      data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
+      method: "GET",
+    }).done(function (data) {
+      console.log(data);
+      submitStateAnalysisNormalQuery( data.result );
+  });
 
-
-  // console.log(formData);
-  const onSubmit = () => $.ajax(settings).done(function (response) {
-  console.log(response);
-});
   console.log(normal.result);
   return (
     <Card>
