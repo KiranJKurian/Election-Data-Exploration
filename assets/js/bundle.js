@@ -38605,6 +38605,8 @@
 	  switch (action.type) {
 	    case _actions.SUBMIT_STATE_ANALYSIS_NORMAL_QUERY:
 	      return _extends({}, state, { normal: { result: action.value } });
+	    case _actions.SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY:
+	      return _extends({}, state, { custom: { result: action.value } });
 	    default:
 	      return state;
 	  }
@@ -38656,6 +38658,7 @@
 	}
 
 	function submitStateAnalysisCustomQuery(value) {
+	  console.log(value);
 	  return {
 	    type: SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY,
 	    value: value
@@ -38713,43 +38716,45 @@
 	var StateAnalysis = function StateAnalysis(props) {
 	  var normal = props.normal,
 	      custom = props.custom,
-	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery;
+	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery,
+	      submitStateAnalysisCustomQuery = props.submitStateAnalysisCustomQuery;
 
 	  var colNames = _election_config2.default.state_info.column_names;
 
 	  var normalData = normal.input && { 'type': 'stateAnalysisNormal', 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute };
 	  var customData = custom.input && { 'type': 'stateAnalysisCustom', 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number };
 
-	  var submit = function submit(data) {
+	  var submit = function submit(data, action) {
 	    return _jquery2.default.ajax({
 	      url: "/query",
 	      data: JSON.stringify(data),
 	      contentType: 'application/json',
 	      method: "POST"
 	    }).done(function (data) {
-	      console.log(data);
-	      submitStateAnalysisNormalQuery(JSON.parse(data)[0].State);
+	      // console.log(data);
+	      action(JSON.parse(data));
 	    });
 	  };
 	  var onNormalSubmit = function onNormalSubmit() {
-	    return submit(normalData);
+	    return submit(normalData, submitStateAnalysisNormalQuery);
 	  };
 
 	  var onCustomSubmit = function onCustomSubmit() {
-	    return submit(customData);
+	    return submit(customData, submitStateAnalysisCustomQuery);
 	  };
 
-	  console.log(normal.result);
+	  // console.log(normal.result);
+	  // console.log(custom.result);
 	  return _react2.default.createElement(
 	    'div',
 	    null,
 	    _react2.default.createElement(
 	      _Card.Card,
-	      null,
+	      { style: { margin: '1em' } },
 	      _react2.default.createElement(
 	        _Card.CardTitle,
 	        null,
-	        'State Analysis Normal'
+	        'State Analysis'
 	      ),
 	      _react2.default.createElement(
 	        _Card.CardText,
@@ -38782,17 +38787,20 @@
 	          'span',
 	          null,
 	          'Result: ',
-	          normal.result ? normal.result : 'N/A'
+	          normal.result ? normal.result.map(function (_ref3) {
+	            var State = _ref3.State;
+	            return State;
+	          }).join(', ') || 'None' : 'N/A'
 	        )
 	      )
 	    ),
 	    _react2.default.createElement(
 	      _Card.Card,
-	      null,
+	      { style: { margin: '1em' } },
 	      _react2.default.createElement(
 	        _Card.CardTitle,
 	        null,
-	        'State Analysis Custom'
+	        'State Analysis: Custom'
 	      ),
 	      _react2.default.createElement(
 	        _Card.CardText,
@@ -38807,11 +38815,11 @@
 	          'article',
 	          null,
 	          'States where',
-	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Attribute', options: colNames.filter(function (_ref3) {
-	              var year = _ref3.year;
+	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Attribute', options: colNames.filter(function (_ref4) {
+	              var year = _ref4.year;
 	              return custom.input && year === custom.input.year;
-	            }).map(function (_ref4) {
-	              var name = _ref4.name;
+	            }).map(function (_ref5) {
+	              var name = _ref5.name;
 	              return name;
 	            }) }),
 	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Less/Greater', options: ['less', 'greater'] }),
@@ -38829,7 +38837,10 @@
 	          'span',
 	          null,
 	          'Result: ',
-	          custom.result ? custom.result : 'N/A'
+	          custom.result ? custom.result.map(function (_ref6) {
+	            var State = _ref6.State;
+	            return State;
+	          }).join(', ') || 'None' : 'N/A'
 	        )
 	      )
 	    )
@@ -38879,7 +38890,8 @@
 	};
 
 	var mapDispatchToProps = {
-	  submitStateAnalysisNormalQuery: _StateAnalysis.submitStateAnalysisNormalQuery
+	  submitStateAnalysisNormalQuery: _StateAnalysis.submitStateAnalysisNormalQuery,
+	  submitStateAnalysisCustomQuery: _StateAnalysis.submitStateAnalysisCustomQuery
 	};
 
 	var ConnectedStateAnalysis = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(StateAnalysis);

@@ -9,6 +9,7 @@ export function submitStateAnalysisNormalQuery(value) {
 }
 
 export function submitStateAnalysisCustomQuery(value) {
+  console.log(value);
   return {
     type: SUBMIT_STATE_ANALYSIS_CUSTOM_QUERY,
     value,

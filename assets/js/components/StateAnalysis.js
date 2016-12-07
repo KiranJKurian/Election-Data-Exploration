@@ -8,34 +8,35 @@ import $ from "jquery";
 import SelectField from './SelectField';
 import NumberField from './NumberField';
 import electionConfig from '../data/election_config';
-import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
+import { submitStateAnalysisNormalQuery, submitStateAnalysisCustomQuery } from '../actions/StateAnalysis';
 
 let StateAnalysis = (props) => {
-  const { normal, custom, submitStateAnalysisNormalQuery } = props;
+  const { normal, custom, submitStateAnalysisNormalQuery, submitStateAnalysisCustomQuery } = props;
   const colNames = electionConfig.state_info.column_names;
 
   const normalData = normal.input && { 'type': 'stateAnalysisNormal', 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute };
   const customData = custom.input && { 'type': 'stateAnalysisCustom', 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number };
 
-  const submit = (data) => $.ajax({
+  const submit = (data, action) => $.ajax({
       url: "/query",
       data: JSON.stringify(data),
       contentType: 'application/json',
       method: "POST",
     }).done(function (data) {
-      console.log(data);
-      submitStateAnalysisNormalQuery( JSON.parse(data)[0].State );
+      // console.log(data);
+      action( JSON.parse(data) );
   });
-  const onNormalSubmit = () => submit(normalData);
+  const onNormalSubmit = () => submit(normalData, submitStateAnalysisNormalQuery);
 
 
-  const onCustomSubmit = () => submit(customData);
+  const onCustomSubmit = () => submit(customData, submitStateAnalysisCustomQuery);
 
-  console.log(normal.result);
+  // console.log(normal.result);
+  // console.log(custom.result);
   return (
     <div>
-      <Card>
-        <CardTitle>State Analysis Normal</CardTitle>
+      <Card style={{ margin: '1em' }}>
+        <CardTitle>State Analysis</CardTitle>
         <CardText>
           <article>
             Select
@@ -50,11 +51,11 @@ let StateAnalysis = (props) => {
         </CardText>
         <CardActions>
           <FlatButton onClick={onNormalSubmit} label="Submit" />
-          <span>Result: {normal.result ? normal.result : 'N/A'}</span>
+          <span>Result: {normal.result ? normal.result.map(({State}) => State).join(', ') || 'None' : 'N/A'}</span>
         </CardActions>
       </Card>
-      <Card>
-        <CardTitle>State Analysis Custom</CardTitle>
+      <Card style={{ margin: '1em' }}>
+        <CardTitle>State Analysis: Custom</CardTitle>
         <CardText>
           <article>
             Select
@@ -73,7 +74,7 @@ let StateAnalysis = (props) => {
         </CardText>
         <CardActions>
           <FlatButton onClick={onCustomSubmit} label="Submit" />
-          <span>Result: {custom.result ? custom.result : 'N/A'}</span>
+          <span>Result: {custom.result ? custom.result.map(({State}) => State).join(', ') || 'None' : 'N/A'}</span>
         </CardActions>
       </Card>
     </div>
@@ -124,6 +125,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = {
   submitStateAnalysisNormalQuery,
+  submitStateAnalysisCustomQuery,
 }
 
 const ConnectedStateAnalysis = connect(

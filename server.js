@@ -136,10 +136,10 @@ const getStateAnalysisCustomQuery = (body) => {
   }
   let query;
   if(highlow == "less") {
-    query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND st.Year = ${year} AND wt.Winner = '${party}'`;
+    query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
   }
   else{
-    query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND st.Year = ${year} AND wt.Winner = '${party}'`;
+    query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
   }
   console.log("Query:");
   console.log(query);
