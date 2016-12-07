@@ -6,7 +6,7 @@ var app = express();
 app.use('/assets', express.static('assets'));
 
 /*******DB CONNECTION *******/
-/*var connection = mysql.createConnection({
+var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'root',
@@ -24,7 +24,7 @@ connection.connect(function(err){
 
 });
 
-connection.end();*/
+// connection.end();
 
 /*******ROUTES*******/
 app.get('/', function(req,res){
@@ -32,15 +32,17 @@ app.get('/', function(req,res){
 });
 
 app.get('/dropDown', function(req, res){
-	var table;
-	if(req.year == 2016){
+  console.log("Req Query:");
+  console.log(req.query);
+  var table;
+	if(req.query.year == 2016){
 		table = 'states_dem_2016';
 	}
 	else{
 		table = 'race_demographics';
 	}
-	var query = "SELECT State FROM "+mysql.escape(table)+" ORDER BY "+mysql.escape(req.attribute);
-	if(req.highlow == "lowest"){
+	var query = "SELECT State FROM "+mysql.escape(table)+" ORDER BY "+mysql.escape(req.query.attribute);
+	if(req.query.highlow == "lowest"){
 		query += "ASC LIMIT 1";
 	}
 	else{

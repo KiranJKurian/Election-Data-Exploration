@@ -4,6 +4,7 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux'
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import $ from "jquery";
 import SelectField from './SelectField';
 import electionConfig from '../data/election_config';
 import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
@@ -11,7 +12,17 @@ import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 let StateAnalysis = (props) => {
   const { normal, submitStateAnalysisNormalQuery } = props;
   // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
-  const onSubmit = () => fetch('/dropDown', { year: 2016, highlow: 'lowest', attribute: 'test' });
+  // let formData = new FormData();
+  // formData.append('year', 2016);
+  // formData.append('highlow', 'lowest');
+  // formData.append('attribute', 'Population_2010');
+  let formData = { year: 2016, highlow: 'lowest', attribute: 'Population_2010' };
+  console.log(formData);
+  const onSubmit = () => $.ajax({
+    url: '/test',
+    data: JSON.stringify({ str: 'Idk Whats Rc' }),
+    type: 'POST',
+  });
   console.log(normal.result);
   return (
     <Card>
