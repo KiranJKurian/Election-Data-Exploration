@@ -38702,7 +38702,7 @@
 	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery;
 	  // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
 
-	  var onSubmit = function onSubmit() {
+	  var onNormalSubmit = function onNormalSubmit() {
 	    return _jquery2.default.ajax({
 	      url: "/dropDown",
 	      data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
@@ -38746,7 +38746,7 @@
 	    _react2.default.createElement(
 	      _Card.CardActions,
 	      null,
-	      _react2.default.createElement(_FlatButton2.default, { onClick: onSubmit, label: 'Submit' })
+	      _react2.default.createElement(_FlatButton2.default, { onClick: onNormalSubmit, label: 'Submit' })
 	    )
 	  );
 	};
@@ -38755,7 +38755,9 @@
 	StateAnalysis = (0, _reduxForm.reduxForm)({
 	  form: 'stateAnalysis',
 	  initialValues: {
-	    normal: {}
+	    Year: 2016,
+	    'High/Low': 'lowest',
+	    'Attribute': 'Population_estimate_2014'
 	  }
 	})(StateAnalysis);
 

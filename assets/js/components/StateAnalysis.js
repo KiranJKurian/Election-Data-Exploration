@@ -12,7 +12,7 @@ import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 let StateAnalysis = (props) => {
   const { normal, submitStateAnalysisNormalQuery } = props;
   // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
-  const onSubmit = () => $.ajax({
+  const onNormalSubmit = () => $.ajax({
       url: "/dropDown",
       data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
       method: "GET",
@@ -38,7 +38,8 @@ let StateAnalysis = (props) => {
         </article>
       </CardText>
       <CardActions>
-        <FlatButton onClick={onSubmit} label="Submit" />
+        <FlatButton onClick={onNormalSubmit} label="Submit" />
+
       </CardActions>
     </Card>
   );
@@ -48,7 +49,9 @@ let StateAnalysis = (props) => {
 StateAnalysis = reduxForm({
   form: 'stateAnalysis',
   initialValues: {
-    normal: {},
+    Year: 2016,
+    'High/Low': 'lowest',
+    'Attribute': 'Population_estimate_2014',
   }
 })(StateAnalysis)
 
