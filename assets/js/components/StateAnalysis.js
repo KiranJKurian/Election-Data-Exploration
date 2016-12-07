@@ -10,7 +10,7 @@ import electionConfig from '../data/election_config';
 import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 
 let StateAnalysis = (props) => {
-  const { normal, submitStateAnalysisNormalQuery } = props;
+  const { normal, result, submitStateAnalysisNormalQuery } = props;
   const colNames = electionConfig.state_info.column_names;
   const onNormalSubmit = () => $.ajax({
       url: "/dropDown",
@@ -18,7 +18,7 @@ let StateAnalysis = (props) => {
       method: "GET",
     }).done(function (data) {
       console.log(data);
-      submitStateAnalysisNormalQuery( data.result );
+      submitStateAnalysisNormalQuery( JSON.parse(data)[0].State );
   });
 
   console.log(normal.result);
@@ -40,7 +40,7 @@ let StateAnalysis = (props) => {
       </CardText>
       <CardActions>
         <FlatButton onClick={onNormalSubmit} label="Submit" />
-        {(normal.result) && console.log(normal.result[0].State) && (<span>Result: {normal.result[0].State}</span>)}
+        <span>Result: {result ? result : 'N/A'}</span>
       </CardActions>
     </Card>
   );
@@ -58,6 +58,7 @@ StateAnalysis = reduxForm({
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    result: state.stateAnalysis.normal.result,
     normal: {
       result: state.stateAnalysis.normal.result,
       input: state.form.stateAnalysis && {
