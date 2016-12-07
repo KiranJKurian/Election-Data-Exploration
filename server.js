@@ -56,7 +56,7 @@ app.get('/dropDown', function(req, res){
 	connection.query(query, function(err, result){
 		if(err){
 			console.log(err);
-			throw err;
+			catch(err);
 		}
 		else{
 			console.log(result);
