@@ -38699,6 +38699,7 @@
 
 	var StateAnalysis = function StateAnalysis(props) {
 	  var normal = props.normal,
+	      custom = props.custom,
 	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery;
 
 	  var colNames = _election_config2.default.state_info.column_names;
@@ -38706,6 +38707,17 @@
 	    return _jquery2.default.ajax({
 	      url: "/dropDown",
 	      data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
+	      method: "GET"
+	    }).done(function (data) {
+	      console.log(data);
+	      submitStateAnalysisNormalQuery(JSON.parse(data)[0].State);
+	    });
+	  };
+
+	  var onCustomSubmit = function onCustomSubmit() {
+	    return _jquery2.default.ajax({
+	      url: "/poll1",
+	      data: { 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number },
 	      method: "GET"
 	    }).done(function (data) {
 	      console.log(data);
@@ -38729,15 +38741,14 @@
 	        'article',
 	        null,
 	        'Select',
-	        _react2.default.createElement(_SelectField2.default, { question: 'Year', options: [2016, 2012, 2004, 2000] })
+	        _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'Year', options: [2016, 2012, 2004, 2000] })
 	      ),
 	      _react2.default.createElement(
 	        'article',
 	        null,
 	        'Which state has the',
-	        _react2.default.createElement(_SelectField2.default, { question: 'High/Low', options: ['lowest', 'highest'] }),
-	        'than',
-	        _react2.default.createElement(_SelectField2.default, { question: 'Attribute', options: colNames.filter(function (_ref) {
+	        _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'High/Low', options: ['lowest', 'highest'] }),
+	        _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'Attribute', options: colNames.filter(function (_ref) {
 	            var year = _ref.year;
 	            return normal.input && year === normal.input.year;
 	          }).map(function (_ref2) {
@@ -38764,20 +38775,39 @@
 	StateAnalysis = (0, _reduxForm.reduxForm)({
 	  form: 'stateAnalysis',
 	  initialValues: {
-	    Year: 2016,
-	    'High/Low': 'lowest',
-	    'Attribute': 'Population_estimate_2014'
+	    normal: {
+	      Year: 2016,
+	      'High/Low': 'lowest',
+	      'Attribute': 'Population_estimate_2014'
+	    },
+	    custom: {
+	      Year: 2016,
+	      'High/Low': 'lowest',
+	      'Attribute': 'Population_estimate_2014',
+	      'Party': 'Dem',
+	      'Number': 1
+	    }
 	  }
 	})(StateAnalysis);
 
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	  return {
 	    normal: {
-	      result: state.stateAnalysis.normal.result,
+	      result: state.stateAnalysis.normal && state.stateAnalysis.normal.result,
 	      input: state.form.stateAnalysis && {
-	        year: state.form.stateAnalysis.values.Year,
-	        highLow: state.form.stateAnalysis.values['High/Low'],
-	        attribute: state.form.stateAnalysis.values.Attribute
+	        year: state.form.stateAnalysis.values.normal.Year,
+	        highLow: state.form.stateAnalysis.values.normal['High/Low'],
+	        attribute: state.form.stateAnalysis.values.normal.Attribute
+	      }
+	    },
+	    custom: {
+	      result: state.stateAnalysis.custom && state.stateAnalysis.custom.result,
+	      input: state.form.stateAnalysis && {
+	        year: state.form.stateAnalysis.values.custom.Year,
+	        highLow: state.form.stateAnalysis.values.custom['High/Low'],
+	        attribute: state.form.stateAnalysis.values.custom.Attribute,
+	        party: state.form.stateAnalysis.values.custom.Party,
+	        number: state.form.stateAnalysis.values.custom.Number
 	      }
 	    }
 	  };
@@ -55914,11 +55944,12 @@
 
 	var SelectField = function SelectField(_ref) {
 	  var question = _ref.question,
+	      location = _ref.location,
 	      options = _ref.options;
 
 	  return _react2.default.createElement(
 	    _reduxForm.Field,
-	    { style: { marginLeft: '.5em', marginRight: '.5em' }, name: question, component: _reduxFormMaterialUi.SelectField, hintText: question },
+	    { style: { marginLeft: '.5em', marginRight: '.5em' }, name: location ? location + '.' + question : question, component: _reduxFormMaterialUi.SelectField, hintText: question },
 	    options.map(function (option) {
 	      return _react2.default.createElement(_MenuItem2.default, { key: question + '.' + option, value: option, primaryText: option });
 	    })
