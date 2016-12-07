@@ -18,7 +18,7 @@ connection.connect(function(err){
 
 });
 
-function(req, res){
+/*function(req, res){
 	connection.query('SELECT State, Persons_65_years_and_over_percent_2014 FROM states_dem_2016 WHERE Persons_65_years_and_over_percent_2014 > 15', function(err, result){
 		if(err){
 			console.log(err);
@@ -138,6 +138,33 @@ function(req, res){
 		}
 	});
 }
+*/
+var dropDown = function(year, highlow, attribute){
+	var table;
+	if(year == 2016){
+		table = 'states_dem_2016';
+	}
+	else{
+		table = 'race_demographics';
+	}
+	var query = "SELECT State FROM "+mysql.escape(table)+" ORDER BY "+mysql.escape(attribute);
+	if(highlow == "lowest"){
+		query += "ASC LIMIT 1";
+	}
+	else{
+		query += "DESC LIMIT 1";
+	}
+	connection.query(query, function(err, result){
+		if(err){
+			console.log(err);
+			throw err;
+		}
+		else{
+			console.log(result);
+			return result;
+		}
+	});
+	connection.end();
+}
 
-
-connection.end();
+module.exports = dropDown;
