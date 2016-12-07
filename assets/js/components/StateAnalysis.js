@@ -11,7 +11,7 @@ import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 
 let StateAnalysis = (props) => {
   const { normal, submitStateAnalysisNormalQuery } = props;
-  // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
+  const colNames = electionConfig.state_info.column_names;
   const onNormalSubmit = () => $.ajax({
       url: "/dropDown",
       data: { 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute },
@@ -34,12 +34,13 @@ let StateAnalysis = (props) => {
           Which state has the
           <SelectField question="High/Low" options={['lowest', 'highest']} />
           than
-          <SelectField question="Attribute" options={electionConfig.state_info.column_names.map(({name}) => name)} />
+          <SelectField question="Attribute" options={ colNames.filter( ({year}) => (normal.input && year === normal.input.year))
+            .map( ({name}) => name) } />
         </article>
       </CardText>
       <CardActions>
         <FlatButton onClick={onNormalSubmit} label="Submit" />
-
+        {(normal.result) && console.log(normal.result[0].State) && (<span>Result: {normal.result[0].State}</span>)}
       </CardActions>
     </Card>
   );

@@ -38700,8 +38700,8 @@
 	var StateAnalysis = function StateAnalysis(props) {
 	  var normal = props.normal,
 	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery;
-	  // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
 
+	  var colNames = _election_config2.default.state_info.column_names;
 	  var onNormalSubmit = function onNormalSubmit() {
 	    return _jquery2.default.ajax({
 	      url: "/dropDown",
@@ -38737,8 +38737,11 @@
 	        'Which state has the',
 	        _react2.default.createElement(_SelectField2.default, { question: 'High/Low', options: ['lowest', 'highest'] }),
 	        'than',
-	        _react2.default.createElement(_SelectField2.default, { question: 'Attribute', options: _election_config2.default.state_info.column_names.map(function (_ref) {
-	            var name = _ref.name;
+	        _react2.default.createElement(_SelectField2.default, { question: 'Attribute', options: colNames.filter(function (_ref) {
+	            var year = _ref.year;
+	            return normal.input && year === normal.input.year;
+	          }).map(function (_ref2) {
+	            var name = _ref2.name;
 	            return name;
 	          }) })
 	      )
@@ -38746,7 +38749,13 @@
 	    _react2.default.createElement(
 	      _Card.CardActions,
 	      null,
-	      _react2.default.createElement(_FlatButton2.default, { onClick: onNormalSubmit, label: 'Submit' })
+	      _react2.default.createElement(_FlatButton2.default, { onClick: onNormalSubmit, label: 'Submit' }),
+	      normal.result && console.log(normal.result[0].State) && _react2.default.createElement(
+	        'span',
+	        null,
+	        'Result: ',
+	        normal.result[0].State
+	      )
 	    )
 	  );
 	};
@@ -71034,6 +71043,51 @@
 	    }, {
 	      name: "Population_per_square_mile_2010",
 	      year: 2016
+	    }, {
+	      name: "White_percent",
+	      year: 2000
+	    }, {
+	      name: "Black_African_American_percent",
+	      year: 2000
+	    }, {
+	      name: "Native_percent",
+	      year: 2000
+	    }, {
+	      name: "Asian_percent",
+	      year: 2000
+	    }, {
+	      name: "Hawaiin_Pacific_percent",
+	      year: 2000
+	    }, {
+	      name: "White_percent",
+	      year: 2004
+	    }, {
+	      name: "Black_African_American_percent",
+	      year: 2004
+	    }, {
+	      name: "Native_percent",
+	      year: 2004
+	    }, {
+	      name: "Asian_percent",
+	      year: 2004
+	    }, {
+	      name: "Hawaiin_Pacific_percent",
+	      year: 2004
+	    }, {
+	      name: "White_percent",
+	      year: 2012
+	    }, {
+	      name: "Black_African_American_percent",
+	      year: 2012
+	    }, {
+	      name: "Native_percent",
+	      year: 2012
+	    }, {
+	      name: "Asian_percent",
+	      year: 2012
+	    }, {
+	      name: "Hawaiin_Pacific_percent",
+	      year: 2012
 	    }]
 	  }
 	};
