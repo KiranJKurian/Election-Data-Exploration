@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import ReactHighmaps from 'react-highcharts/ReactHighmaps';
 import USAMapData from '../data/us-all';
 import USAData from '../data/us-data';
+import USANewData from '../data/us-new-data';
 
 const USAMap = (props) => {
   const data = USAData;
+  const newData = USANewData;
   const config = {
     title: {
       text: 'US Election Results 2016'
@@ -49,7 +51,7 @@ const USAMap = (props) => {
    },
     series : [
       {
-        data : data,
+        data : newData,
         name: 'Voting Info',
         mapData: USAMapData,
         joinBy: 'postal-code',

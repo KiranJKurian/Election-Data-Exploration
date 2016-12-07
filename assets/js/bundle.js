@@ -60639,12 +60639,159 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.default = {
-		state_info: {
-			column_names: ["Population_estimate_2014", "Population_2010", "Persons_under_5_years_percent_2014", "Persons_under_18_years_percent_2014", "Persons_65_years_and_over_percent_2014", "Female_persons_percent_2014", "White_alone_percent_2014", "Black_or_African_American_alone_percent_2014", "American_Indian_and_Alaska_Native_alone_percent_2014", "Asian_alone_percent_2014", "Native_Hawaiian_and_Other_Pacific_Islander_alone_percent_2014", "Two_or_More_Races_percent_2014", "Hispanic_or_Latino_percent_2014", "White_alone_not_Hispanic_or_Latino_percent_2014", "Same_house_1_year_and_over_percent_2009-2013", "Foreign_born_persons_percent_2009-2013", "Lang_not_english_age_5_2009-2013", "High_school_graduate_25+_2009-2013", "Bachelors_degree_age_25+_2009-2013", "Veterans_2009-2013", "Travel_time_workers_age_16+_2009-2013", "Housing_units_2014", "Homeownership_rate_2009-2013", "Housing_units_in_multi-unit_structures_percent_2009-2013", "Median_value_of_owner-occupied_housing_units_2009-2013", "Households_2009-2013", "Persons_per_household_2009-2013", "Per_capita_income_2009-2013", "Median_household_income_2009-2013", "Persons_below_poverty_level_percent_2009-2013", "Private_nonfarm_establishments_2013", "Private_nonfarm_employment_2013", "Private_nonfarm_employment_percent_change_2012-2013", "Nonemployer_establishments_2013", "Total_number_of_firms_2007", "Black-owned_firms_percent_2007", "Native-owned_firms_percent_2007", "Asian-owned_firms_percent_2007", "Pacific_Islander-owned_firms_percent_2007", "Hispanic-owned_firms_percent_2007", "Women-owned_firms_percent_2007", "Manufacturers_shipments_2007", "Merchant_wholesaler_sales_2007", "Retail_sales_2007", "Retail_sales_per_capita_2007", "Accommodation_and_food_services_sales_2007", "Building_permits_2014", "Land_area_in_square_miles_2010", "Population_per_square_mile_2010"]
-		}
+	  state_info: {
+	    column_names: [{
+	      name: "Population_estimate_2014",
+	      year: 2016
+	    }, {
+	      name: "Population_2010",
+	      year: 2016
+	    }, {
+	      name: "Persons_under_5_years_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Persons_under_18_years_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Persons_65_years_and_over_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Female_persons_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "White_alone_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Black_or_African_American_alone_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "American_Indian_and_Alaska_Native_alone_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Asian_alone_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Native_Hawaiian_and_Other_Pacific_Islander_alone_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Two_or_More_Races_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Hispanic_or_Latino_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "White_alone_not_Hispanic_or_Latino_percent_2014",
+	      year: 2016
+	    }, {
+	      name: "Same_house_1_year_and_over_percent_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Foreign_born_persons_percent_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Lang_not_english_age_5_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "High_school_graduate_25+_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Bachelors_degree_age_25+_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Veterans_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Travel_time_workers_age_16+_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Housing_units_2014",
+	      year: 2016
+	    }, {
+	      name: "Homeownership_rate_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Housing_units_in_multi-unit_structures_percent_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Median_value_of_owner-occupied_housing_units_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Households_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Persons_per_household_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Per_capita_income_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Median_household_income_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Persons_below_poverty_level_percent_2009-2013",
+	      year: 2016
+	    }, {
+	      name: "Private_nonfarm_establishments_2013",
+	      year: 2016
+	    }, {
+	      name: "Private_nonfarm_employment_2013",
+	      year: 2016
+	    }, {
+	      name: "Private_nonfarm_employment_percent_change_2012-2013",
+	      year: 2016
+	    }, {
+	      name: "Nonemployer_establishments_2013",
+	      year: 2016
+	    }, {
+	      name: "Total_number_of_firms_2007",
+	      year: 2016
+	    }, {
+	      name: "Black-owned_firms_percent_2007",
+	      year: 2016
+	    }, {
+	      name: "Native-owned_firms_percent_2007",
+	      year: 2016
+	    }, {
+	      name: "Asian-owned_firms_percent_2007",
+	      year: 2016
+	    }, {
+	      name: "Pacific_Islander-owned_firms_percent_2007",
+	      year: 2016
+	    }, {
+	      name: "Hispanic-owned_firms_percent_2007",
+	      year: 2016
+	    }, {
+	      name: "Women-owned_firms_percent_2007",
+	      year: 2016
+	    }, {
+	      name: "Manufacturers_shipments_2007",
+	      year: 2016
+	    }, {
+	      name: "Merchant_wholesaler_sales_2007",
+	      year: 2016
+	    }, {
+	      name: "Retail_sales_2007",
+	      year: 2016
+	    }, {
+	      name: "Retail_sales_per_capita_2007",
+	      year: 2016
+	    }, {
+	      name: "Accommodation_and_food_services_sales_2007",
+	      year: 2016
+	    }, {
+	      name: "Building_permits_2014",
+	      year: 2016
+	    }, {
+	      name: "Land_area_in_square_miles_2010",
+	      year: 2016
+	    }, {
+	      name: "Population_per_square_mile_2010",
+	      year: 2016
+	    }]
+	  }
 	};
 
 /***/ },
@@ -60677,10 +60824,15 @@
 
 	var _usData2 = _interopRequireDefault(_usData);
 
+	var _usNewData = __webpack_require__(695);
+
+	var _usNewData2 = _interopRequireDefault(_usNewData);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var USAMap = function USAMap(props) {
 	  var data = _usData2.default;
+	  var newData = _usNewData2.default;
 	  var config = {
 	    title: {
 	      text: 'US Election Results 2016'
@@ -60722,7 +60874,7 @@
 	      }
 	    },
 	    series: [{
-	      data: data,
+	      data: newData,
 	      name: 'Voting Info',
 	      mapData: _usAll2.default,
 	      joinBy: 'postal-code',
@@ -61356,6 +61508,421 @@
 	  return { "hc-key": state['hc-key'], value: state['value'] < 30 ? 1 : 0, 'name': index > 30 ? 'Clinton' : 'Trump', 'postal-code': state['hc-key'].substring(3).toUpperCase() };
 	});
 	exports.default = random;
+
+/***/ },
+/* 695 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _abbrState = __webpack_require__(696);
+
+	var _abbrState2 = _interopRequireDefault(_abbrState);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var data = [{
+	  "State": "Alabama",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Alaska",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Arizona",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Arkansas",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "California",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Colorado",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Connecticut",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Delaware",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "District of Columbia",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Florida",
+	  "winner2016": "Trump",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Georgia",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Hawaii",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Idaho",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Illinois",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Indiana",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Iowa",
+	  "winner2016": "Trump",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Kansas",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Kentucky",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Louisiana",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Maine",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Maryland",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Massachusetts",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Michigan",
+	  "winner2016": "Trump",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Minnesota",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Mississippi",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Missouri",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Montana",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Nebraska",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Nevada",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "New Hampshire",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "New Jersey",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "New Mexico",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "New York",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "North Carolina",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "North Dakota",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Ohio",
+	  "winner2016": "Trump",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Oklahoma",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Oregon",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Pennsylvania",
+	  "winner2016": "Trump",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Rhode Island",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "South Carolina",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "South Dakota",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Tennessee",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Texas",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Utah",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Vermont",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Virginia",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Washington",
+	  "winner2016": "Clinton",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "West Virginia",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}, {
+	  "State": "Wisconsin",
+	  "winner2016": "Trump",
+	  "winner2012": "Obama",
+	  "winner2008": "Obama",
+	  "winner2004": "Kerry",
+	  "winner2000": "Al Gore"
+	}, {
+	  "State": "Wyoming",
+	  "winner2016": "Trump",
+	  "winner2012": "Romney",
+	  "winner2008": "McCain",
+	  "winner2004": "Bush",
+	  "winner2000": "Bush"
+	}];
+
+	data = data.map(function (state) {
+	  return _extends({}, state, { "postal-code": (0, _abbrState2.default)(state.State, 'abbr'), value: state.winner2016 == "Trump" ? 0 : 1 });
+	});
+	exports.default = data;
+
+/***/ },
+/* 696 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = abbrState;
+	function abbrState(input, to) {
+	    var i = 0;
+	    var states = [['Arizona', 'AZ'], ['Alabama', 'AL'], ['Alaska', 'AK'], ['Arizona', 'AZ'], ['Arkansas', 'AR'], ['California', 'CA'], ['Colorado', 'CO'], ['Connecticut', 'CT'], ['Delaware', 'DE'], ['Florida', 'FL'], ['Georgia', 'GA'], ['Hawaii', 'HI'], ['Idaho', 'ID'], ['Illinois', 'IL'], ['Indiana', 'IN'], ['Iowa', 'IA'], ['Kansas', 'KS'], ['Kentucky', 'KY'], ['Kentucky', 'KY'], ['Louisiana', 'LA'], ['Maine', 'ME'], ['Maryland', 'MD'], ['Massachusetts', 'MA'], ['Michigan', 'MI'], ['Minnesota', 'MN'], ['Mississippi', 'MS'], ['Missouri', 'MO'], ['Montana', 'MT'], ['Nebraska', 'NE'], ['Nevada', 'NV'], ['New Hampshire', 'NH'], ['New Jersey', 'NJ'], ['New Mexico', 'NM'], ['New York', 'NY'], ['North Carolina', 'NC'], ['North Dakota', 'ND'], ['Ohio', 'OH'], ['Oklahoma', 'OK'], ['Oregon', 'OR'], ['Pennsylvania', 'PA'], ['Rhode Island', 'RI'], ['South Carolina', 'SC'], ['South Dakota', 'SD'], ['Tennessee', 'TN'], ['Texas', 'TX'], ['Utah', 'UT'], ['Vermont', 'VT'], ['Virginia', 'VA'], ['Washington', 'WA'], ['West Virginia', 'WV'], ['Wisconsin', 'WI'], ['Wyoming', 'WY']];
+
+	    if (to == 'abbr') {
+	        input = input.replace(/\w\S*/g, function (txt) {
+	            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	        });
+	        for (i = 0; i < states.length; i++) {
+	            if (states[i][0] == input) {
+	                return states[i][1];
+	            }
+	        }
+	    } else if (to == 'name') {
+	        input = input.toUpperCase();
+	        for (i = 0; i < states.length; i++) {
+	            if (states[i][1] == input) {
+	                return states[i][0];
+	            }
+	        }
+	    }
+	}
 
 /***/ }
 /******/ ]);
