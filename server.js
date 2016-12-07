@@ -135,6 +135,15 @@ const getStateAnalysisCustomQuery = (body) => {
     table = 'race_demographics';
   }
   let query;
+  if(year == 2016){
+  	if(highlow == "less"){
+  		query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
+  		return query;
+  	}else{
+  		query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
+  		return query;
+  	}
+  }
   if(highlow == "less") {
     query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
   }
