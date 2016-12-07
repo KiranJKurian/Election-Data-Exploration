@@ -57,7 +57,6 @@ app.get('/dropDown', function(req, res){
 		}
 	});
 	connection.end();
-}
 });
 
 
