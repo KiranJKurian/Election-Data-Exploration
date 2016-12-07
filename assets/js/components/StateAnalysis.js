@@ -10,7 +10,8 @@ import { submitStateAnalysisNormalQuery } from '../actions/StateAnalysis';
 
 let StateAnalysis = (props) => {
   const { normal, submitStateAnalysisNormalQuery } = props;
-  const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
+  // const onSubmit = () => submitStateAnalysisNormalQuery( normal.input );
+  const onSubmit = () => fetch('/dropDown', { year: 2016, highlow: 'lowest', attribute: 'test' });
   console.log(normal.result);
   return (
     <Card>
@@ -24,7 +25,7 @@ let StateAnalysis = (props) => {
           Which state has the
           <SelectField question="High/Low" options={['lowest', 'highest']} />
           than
-          <SelectField question="Attribute" options={electionConfig.state_info.column_names} />
+          <SelectField question="Attribute" options={electionConfig.state_info.column_names.map(({name}) => name)} />
         </article>
       </CardText>
       <CardActions>

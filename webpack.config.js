@@ -17,5 +17,11 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    fs: '{}',
+    tls: '{}',
+    net: '{}',
+    console: '{}',
+  },
   watch: true,
 };
