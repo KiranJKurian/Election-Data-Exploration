@@ -38727,45 +38727,96 @@
 
 	  console.log(normal.result);
 	  return _react2.default.createElement(
-	    _Card.Card,
+	    'div',
 	    null,
 	    _react2.default.createElement(
-	      _Card.CardTitle,
-	      null,
-	      'State Analysis'
-	    ),
-	    _react2.default.createElement(
-	      _Card.CardText,
+	      _Card.Card,
 	      null,
 	      _react2.default.createElement(
-	        'article',
+	        _Card.CardTitle,
 	        null,
-	        'Select',
-	        _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'Year', options: [2016, 2012, 2004, 2000] })
+	        'State Analysis Normal'
 	      ),
 	      _react2.default.createElement(
-	        'article',
+	        _Card.CardText,
 	        null,
-	        'Which state has the',
-	        _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'High/Low', options: ['lowest', 'highest'] }),
-	        _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'Attribute', options: colNames.filter(function (_ref) {
-	            var year = _ref.year;
-	            return normal.input && year === normal.input.year;
-	          }).map(function (_ref2) {
-	            var name = _ref2.name;
-	            return name;
-	          }) })
+	        _react2.default.createElement(
+	          'article',
+	          null,
+	          'Select',
+	          _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'Year', options: [2016, 2012, 2004, 2000] })
+	        ),
+	        _react2.default.createElement(
+	          'article',
+	          null,
+	          'Which state has the',
+	          _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'High/Low', options: ['lowest', 'highest'] }),
+	          _react2.default.createElement(_SelectField2.default, { location: 'normal', question: 'Attribute', options: colNames.filter(function (_ref) {
+	              var year = _ref.year;
+	              return normal.input && year === normal.input.year;
+	            }).map(function (_ref2) {
+	              var name = _ref2.name;
+	              return name;
+	            }) })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _Card.CardActions,
+	        null,
+	        _react2.default.createElement(_FlatButton2.default, { onClick: onNormalSubmit, label: 'Submit' }),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          'Result: ',
+	          normal.result ? normal.result : 'N/A'
+	        )
 	      )
 	    ),
 	    _react2.default.createElement(
-	      _Card.CardActions,
+	      _Card.Card,
 	      null,
-	      _react2.default.createElement(_FlatButton2.default, { onClick: onNormalSubmit, label: 'Submit' }),
 	      _react2.default.createElement(
-	        'span',
+	        _Card.CardTitle,
 	        null,
-	        'Result: ',
-	        normal.result ? normal.result : 'N/A'
+	        'State Analysis Custom'
+	      ),
+	      _react2.default.createElement(
+	        _Card.CardText,
+	        null,
+	        _react2.default.createElement(
+	          'article',
+	          null,
+	          'Select',
+	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Year', options: [2016, 2012, 2004, 2000] })
+	        ),
+	        _react2.default.createElement(
+	          'article',
+	          null,
+	          'States where',
+	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Attribute', options: colNames.filter(function (_ref3) {
+	              var year = _ref3.year;
+	              return custom.input && year === custom.input.year;
+	            }).map(function (_ref4) {
+	              var name = _ref4.name;
+	              return name;
+	            }) }),
+	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Less/Greater', options: ['less', 'greater'] }),
+	          'than',
+	          _react2.default.createElement(_SelectField2.default, { location: 'custom', question: 'Number', options: [1, 2, 3] }),
+	          'and the winning party was',
+	          _react2.default.createElement(_SelectField2.default, { location: 'customer', question: 'Party', options: ["Dem", "GOP", "Ind"] })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _Card.CardActions,
+	        null,
+	        _react2.default.createElement(_FlatButton2.default, { onClick: onCustomSubmit, label: 'Submit' }),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          'Result: ',
+	          custom.result ? custom.result : 'N/A'
+	        )
 	      )
 	    )
 	  );

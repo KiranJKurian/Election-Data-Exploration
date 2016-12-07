@@ -32,25 +32,50 @@ let StateAnalysis = (props) => {
 
   console.log(normal.result);
   return (
-    <Card>
-      <CardTitle>State Analysis</CardTitle>
-      <CardText>
-        <article>
-          Select
-          <SelectField location="normal" question="Year" options={[2016,2012,2004,2000]} />
-        </article>
-        <article>
-          Which state has the
-          <SelectField location="normal" question="High/Low" options={['lowest', 'highest']} />
-          <SelectField location="normal" question="Attribute" options={ colNames.filter( ({year}) => (normal.input && year === normal.input.year))
-            .map( ({name}) => name) } />
-        </article>
-      </CardText>
-      <CardActions>
-        <FlatButton onClick={onNormalSubmit} label="Submit" />
-        <span>Result: {normal.result ? normal.result : 'N/A'}</span>
-      </CardActions>
-    </Card>
+    <div>
+      <Card>
+        <CardTitle>State Analysis Normal</CardTitle>
+        <CardText>
+          <article>
+            Select
+            <SelectField location="normal" question="Year" options={[2016,2012,2004,2000]} />
+          </article>
+          <article>
+            Which state has the
+            <SelectField location="normal" question="High/Low" options={['lowest', 'highest']} />
+            <SelectField location="normal" question="Attribute" options={ colNames.filter( ({year}) => (normal.input && year === normal.input.year))
+              .map( ({name}) => name) } />
+          </article>
+        </CardText>
+        <CardActions>
+          <FlatButton onClick={onNormalSubmit} label="Submit" />
+          <span>Result: {normal.result ? normal.result : 'N/A'}</span>
+        </CardActions>
+      </Card>
+      <Card>
+        <CardTitle>State Analysis Custom</CardTitle>
+        <CardText>
+          <article>
+            Select
+            <SelectField location="custom" question="Year" options={[2016,2012,2004,2000]} />
+          </article>
+          <article>
+            States where
+            <SelectField location="custom" question="Attribute" options={ colNames.filter( ({year}) => (custom.input && year === custom.input.year))
+              .map( ({name}) => name) } />
+            <SelectField location="custom" question="Less/Greater" options={['less', 'greater']} />
+            than
+            <SelectField location="custom" question="Number" options={[1,2,3]} />
+            and the winning party was
+            <SelectField location="customer" question="Party" options={["Dem", "GOP", "Ind"]} />
+          </article>
+        </CardText>
+        <CardActions>
+          <FlatButton onClick={onCustomSubmit} label="Submit" />
+          <span>Result: {custom.result ? custom.result : 'N/A'}</span>
+        </CardActions>
+      </Card>
+    </div>
   );
 }
 
