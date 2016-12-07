@@ -38699,7 +38699,6 @@
 
 	var StateAnalysis = function StateAnalysis(props) {
 	  var normal = props.normal,
-	      result = props.result,
 	      submitStateAnalysisNormalQuery = props.submitStateAnalysisNormalQuery;
 
 	  var colNames = _election_config2.default.state_info.column_names;
@@ -38755,7 +38754,7 @@
 	        'span',
 	        null,
 	        'Result: ',
-	        result ? result : 'N/A'
+	        normal.result ? normal.result : 'N/A'
 	      )
 	    )
 	  );
@@ -38773,7 +38772,6 @@
 
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	  return {
-	    result: state.stateAnalysis.normal.result,
 	    normal: {
 	      result: state.stateAnalysis.normal.result,
 	      input: state.form.stateAnalysis && {

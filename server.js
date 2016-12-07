@@ -66,6 +66,8 @@ app.get('/dropDown', function(req, res){
 	// connection.end();
 });
 
+// Input: { year, attribute, highlow, party }
+// Output: [{ State1 }, { State2 }]
 app.get('/poll1', function(req, res){
 	var table;
 	var query;
