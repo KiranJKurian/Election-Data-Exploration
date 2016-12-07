@@ -76,10 +76,10 @@ app.get('/poll1', function(req, res){
 		table = 'race_demographics';
 	}
 	if(req.query.highlow == "less"){
-		var query = "SELECT st.State, st."+stripQuote(mysql.escape(req.query.attribute))+", wt."+ stripQuote(mysql.escape(req.query.party)) + " FROM "+ stripQuote(table) + " st, state_winners wt WHERE st.State = wt.State AND st."+stripQuote(mysql.escape(req.query.attribute))+ "<"+stripQuote(mysql.escape(req.query.number))+" AND wt.Year = "+ stripQuote(mysql.escape(req.query.year))+ " AND wt.Winner = "+stripQuote(mysql.escape(req.query.party));
+		var query = "SELECT st.State FROM "+ stripQuote(table) + " st, state_winners wt WHERE st.State = wt.State AND st."+stripQuote(mysql.escape(req.query.attribute))+ "<"+stripQuote(mysql.escape(req.query.number))+" AND wt.Year = "+ stripQuote(mysql.escape(req.query.year))+ " AND wt.Winner = "+stripQuote(mysql.escape(req.query.party));
 	}
 	else{
-		var query = "SELECT st.State, st."+stripQuote(mysql.escape(req.query.attribute))+", wt."+ stripQuote(mysql.escape(req.query.party)) + " FROM "+ stripQuote(table) + " st, state_winners wt WHERE st.State = wt.State AND st."+stripQuote(mysql.escape(req.query.attribute))+ ">"+stripQuote(mysql.escape(req.query.number))+" AND wt.Year = "+ stripQuote(mysql.escape(req.query.year))+ " AND wt.Winner = "+stripQuote(mysql.escape(req.query.party));
+		var query = "SELECT st.State FROM "+ stripQuote(table) + " st, state_winners wt WHERE st.State = wt.State AND st."+stripQuote(mysql.escape(req.query.attribute))+ ">"+stripQuote(mysql.escape(req.query.number))+" AND wt.Year = "+ stripQuote(mysql.escape(req.query.year))+ " AND wt.Winner = "+stripQuote(mysql.escape(req.query.party));
 	}
 	connection.query(query, function(err, result){
 		if(err){
