@@ -66,6 +66,33 @@ app.get('/dropDown', function(req, res){
 	// connection.end();
 });
 
+app.get('/poll1', function(req, res){
+	var table;
+	var query;
+	if(req.query.year == 2016){
+		table = 'states_dem_2016';
+	}
+	else{
+		table = 'race_demographics';
+	}
+	if(req.query.highlow == "less"){
+		var query = "SELECT st.State, st."+stripQuote(mysql.escape(req.query.attribute))+", wt."+ stripQuote(mysql.escape(req.query.party)) + " FROM "+ stripQuote(table) + " st, state_winners wt WHERE st.State = wt.State AND st."+stripQuote(mysql.escape(req.query.attribute))+ "<"+stripQuote(mysql.escape(req.query.number))+" AND wt.Year = "+ stripQuote(mysql.escape(req.query.year))+ " AND wt.Winner = "+stripQuote(mysql.escape(req.query.party));
+	}
+	else{
+		var query = "SELECT st.State, st."+stripQuote(mysql.escape(req.query.attribute))+", wt."+ stripQuote(mysql.escape(req.query.party)) + " FROM "+ stripQuote(table) + " st, state_winners wt WHERE st.State = wt.State AND st."+stripQuote(mysql.escape(req.query.attribute))+ ">"+stripQuote(mysql.escape(req.query.number))+" AND wt.Year = "+ stripQuote(mysql.escape(req.query.year))+ " AND wt.Winner = "+stripQuote(mysql.escape(req.query.party));
+	}
+	connection.query(query, function(err, result){
+		if(err){
+			console.log(err);
+			throw err;
+		}
+		else{
+			console.log(result);
+			res.send(JSON.stringify(result));
+		}
+	});
+});
+
 
 app.get('/bundle.js', function(req, res){
 	res.sendFile(__dirname + "/assets/js/bundle.js")
