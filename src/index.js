@@ -37,7 +37,8 @@ app.post('/query', function(req, res){
 });
 
 app.get('/db', function(req, res){
-  queries.showdb(res);
+  var result = queries.showdb(res);
+  //console.log(result);
 });
 
 app.get('/bundle.js', function(req, res){
