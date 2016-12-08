@@ -5,17 +5,21 @@ import { connect } from 'react-redux'
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import $ from "jquery";
+import Snackbar from 'material-ui/Snackbar';
 import SelectField from './SelectField';
 import NumberField from './NumberField';
 import electionConfig from '../data/election_config';
-import { submitStateAnalysisNormalQuery, submitStateAnalysisCustomQuery } from '../actions/StateAnalysis';
+import { submitStateAnalysisNormalQuery, submitStateAnalysisCustomQuery, errorStateAnalysis } from '../actions/StateAnalysis';
 
 let StateAnalysis = (props) => {
-  const { normal, custom, submitStateAnalysisNormalQuery, submitStateAnalysisCustomQuery } = props;
+  const { normal, custom, submitStateAnalysisNormalQuery, submitStateAnalysisCustomQuery, errorStateAnalysis, submitError } = props;
   const colNames = electionConfig.state_info.column_names;
 
   const normalData = normal.input && { 'type': 'stateAnalysisNormal', 'year': normal.input.year, 'highlow': normal.input.highLow, 'attribute': normal.input.attribute };
   const customData = custom.input && { 'type': 'stateAnalysisCustom', 'year': custom.input.year, 'highlow': custom.input.highLow, 'attribute': custom.input.attribute, 'party': custom.input.party, 'number': custom.input.number };
+
+  const closeErrorSnackBar = () => errorStateAnalysis(false);
+  const openErrorSnackBar = (error = true) => errorStateAnalysis(error);
 
   const submit = (data, action) => $.ajax({
       url: "/query",
@@ -23,16 +27,18 @@ let StateAnalysis = (props) => {
       contentType: 'application/json',
       method: "POST",
     }).done(function (data) {
-      // console.log(data);
-      action( JSON.parse(data) );
+      data = JSON.parse(data);
+      if(data.error) {
+        openErrorSnackBar(data.error);
+      }
+      else{
+        action(data);
+      }
   });
   const onNormalSubmit = () => submit(normalData, submitStateAnalysisNormalQuery);
 
-
   const onCustomSubmit = () => submit(customData, submitStateAnalysisCustomQuery);
 
-  // console.log(normal.result);
-  // console.log(custom.result);
   return (
     <div>
       <Card style={{ margin: '1em' }}>
@@ -77,6 +83,12 @@ let StateAnalysis = (props) => {
           <span>Result: {custom.result ? custom.result.map(({State}) => State).join(', ') || 'None' : 'N/A'}</span>
         </CardActions>
       </Card>
+      <Snackbar
+        open={!!submitError}
+        message={`Error: ${submitError}`}
+        autoHideDuration={4000}
+        onRequestClose={closeErrorSnackBar}
+      />
     </div>
   );
 }
@@ -102,6 +114,7 @@ StateAnalysis = reduxForm({
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    submitError: state.stateAnalysis.error,
     normal: {
       result: state.stateAnalysis.normal && state.stateAnalysis.normal.result,
       input: state.form.stateAnalysis && {
@@ -126,6 +139,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = {
   submitStateAnalysisNormalQuery,
   submitStateAnalysisCustomQuery,
+  errorStateAnalysis,
 }
 
 const ConnectedStateAnalysis = connect(
