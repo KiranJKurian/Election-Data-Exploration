@@ -53,6 +53,31 @@ export const runQuery = (query, res) => {
   });
 };
 
+export const showdb = (res) => {
+  connection.query("SHOW TABLES IN election_data", function(err, result){
+    if(err){
+      console.log(err);
+      res.send(JSON.stringify({ error: 'Bad Query' }));
+    }
+    else{
+      var final = [];
+      console.log(result);
+      for(var i = 0; i < result.length; i++){
+          connection.query(`SELECT * FROM ${result[i]}`, function(err, rows){
+            if(err){
+              console.log(err);
+              res.send(JSON.stringify({ error: 'Bad Query' }));
+            }
+            else{
+              final[i] = rows;
+            }
+          });
+      }
+      res.send(JSON.stringify(final));
+    }
+  });
+};
+
 export const getStateAnalysisNormalQuery = (body) => {
   let table;
   let year = body.year, highlow = body.highlow, attribute = body.attribute;

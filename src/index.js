@@ -40,6 +40,13 @@ app.post('/query', function(req, res){
   }
 });
 
+app.get('/db', function(req, res){
+  var result = queries.showdb(res);
+
+  res.render(result);
+  
+});
+
 
 app.get('/bundle.js', function(req, res){
   res.sendFile(path.join(__dirname, '../assets/js/bundle.js'))
