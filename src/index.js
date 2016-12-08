@@ -16,10 +16,6 @@ app.use( bodyParser.json() );
 app.use(express.static(path.join(__dirname, '../assets')));
 
 /*******ROUTES*******/
-app.get('/', function(req,res){
-  res.sendFile(path.join(__dirname, '../assets/views/app.html'));
-});
-
 app.post('/query', function(req, res){
   const body = req.body;
   try {
@@ -41,15 +37,15 @@ app.post('/query', function(req, res){
 });
 
 app.get('/db', function(req, res){
-  var result = queries.showdb(res);
-
-  res.render('db',result);
-
+  queries.showdb(res);
 });
-
 
 app.get('/bundle.js', function(req, res){
   res.sendFile(path.join(__dirname, '../assets/js/bundle.js'))
+});
+
+app.get('*', function(req,res){
+  res.sendFile(path.join(__dirname, '../assets/views/app.html'));
 });
 
 /*******START SERVER*******/
