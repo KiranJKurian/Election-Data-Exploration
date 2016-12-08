@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Card, CardText, CardTitle } from 'material-ui/Card';
+import { Card, CardText, CardTitle, CardActions } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import tests from '../tests/tests';
 
 const Test = (props) => {
@@ -10,11 +11,9 @@ const Test = (props) => {
     <div>
       <Card style={{ margin: '1em' }}>
         <CardTitle>Tests</CardTitle>
-        <CardText>
-          <article>
-            Tests
-          </article>
-        </CardText>
+        <CardActions>
+          <FlatButton onClick={tests} label="Test" />
+        </CardActions>
       </Card>
     </div>
   );
