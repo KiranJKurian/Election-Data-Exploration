@@ -32,7 +32,7 @@ let USAMap = (props) => {
 
   const config = {
     title: {
-      text: 'US Election Results 2016'
+      text: `US Election Results ${year || 2016}`
     },
 
     legend: {
