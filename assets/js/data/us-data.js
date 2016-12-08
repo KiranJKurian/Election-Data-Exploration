@@ -1,214 +1,410 @@
-let random = [
+export default [
   {
-    "hc-key": "us-ma",
-    "value": 0
+    "State": "Alabama",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-wa",
-    "value": 1
+    "State": "Alaska",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ca",
-    "value": 2
+    "State": "Arizona",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-or",
-    "value": 3
+    "State": "Arkansas",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-wi",
-    "value": 4
+    "State": "California",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-me",
-    "value": 5
+    "State": "Colorado",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-mi",
-    "value": 6
+    "State": "Connecticut",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-nv",
-    "value": 7
+    "State": "Delaware",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-nm",
-    "value": 8
+    "State": "District of Columbia",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-co",
-    "value": 9
+    "State": "Florida",
+    "winner2016": "Trump",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-wy",
-    "value": 10
+    "State": "Georgia",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ks",
-    "value": 11
+    "State": "Hawaii",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-ne",
-    "value": 12
+    "State": "Idaho",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ok",
-    "value": 13
+    "State": "Illinois",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-mo",
-    "value": 14
+    "State": "Indiana",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-il",
-    "value": 15
+    "State": "Iowa",
+    "winner2016": "Trump",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-in",
-    "value": 16
+    "State": "Kansas",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-vt",
-    "value": 17
+    "State": "Kentucky",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ar",
-    "value": 18
+    "State": "Louisiana",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-tx",
-    "value": 19
+    "State": "Maine",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-ri",
-    "value": 20
+    "State": "Maryland",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-al",
-    "value": 21
+    "State": "Massachusetts",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-ms",
-    "value": 22
+    "State": "Michigan",
+    "winner2016": "Trump",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-nc",
-    "value": 23
+    "State": "Minnesota",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-va",
-    "value": 24
+    "State": "Mississippi",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ia",
-    "value": 25
+    "State": "Missouri",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-md",
-    "value": 26
+    "State": "Montana",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-de",
-    "value": 27
+    "State": "Nebraska",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-pa",
-    "value": 28
+    "State": "Nevada",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-nj",
-    "value": 29
+    "State": "New Hampshire",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ny",
-    "value": 30
+    "State": "New Jersey",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-id",
-    "value": 31
+    "State": "New Mexico",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-sd",
-    "value": 32
+    "State": "New York",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-ct",
-    "value": 33
+    "State": "North Carolina",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-nh",
-    "value": 34
+    "State": "North Dakota",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ky",
-    "value": 35
+    "State": "Ohio",
+    "winner2016": "Trump",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-oh",
-    "value": 36
+    "State": "Oklahoma",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-tn",
-    "value": 37
+    "State": "Oregon",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-wv",
-    "value": 38
+    "State": "Pennsylvania",
+    "winner2016": "Trump",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-dc",
-    "value": 39
+    "State": "Rhode Island",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-la",
-    "value": 40
+    "State": "South Carolina",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-fl",
-    "value": 41
+    "State": "South Dakota",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-ga",
-    "value": 42
+    "State": "Tennessee",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-sc",
-    "value": 43
+    "State": "Texas",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-mn",
-    "value": 44
+    "State": "Utah",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-mt",
-    "value": 45
+    "State": "Vermont",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-nd",
-    "value": 46
+    "State": "Virginia",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-az",
-    "value": 47
+    "State": "Washington",
+    "winner2016": "Clinton",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-ut",
-    "value": 48
+    "State": "West Virginia",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   },
   {
-    "hc-key": "us-hi",
-    "value": 49
+    "State": "Wisconsin",
+    "winner2016": "Trump",
+    "winner2012": "Obama",
+    "winner2008": "Obama",
+    "winner2004": "Kerry",
+    "winner2000": "Al Gore"
   },
   {
-    "hc-key": "us-ak",
-    "value": 50
-  },
-  {
-    "value": 51
+    "State": "Wyoming",
+    "winner2016": "Trump",
+    "winner2012": "Romney",
+    "winner2008": "McCain",
+    "winner2004": "Bush",
+    "winner2000": "Bush"
   }
 ];
-
-
-random = random.filter((state) => (typeof state['hc-key'] !== 'undefined'))
-  .map((state, index) => ({ "hc-key": state['hc-key'], value: state['value'] < 30 ? 1 : 0, 'name': index > 30 ? 'Clinton' : 'Trump', 'postal-code': state['hc-key'].substring(3).toUpperCase() }))
-export default random;
