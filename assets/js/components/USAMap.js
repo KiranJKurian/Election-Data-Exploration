@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactHighmaps from 'react-highcharts/ReactHighmaps';
-import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux'
 import SelectField from './SelectField';
