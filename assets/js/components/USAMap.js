@@ -27,8 +27,8 @@ let USAMap = (props) => {
 
   data = data.map((state) => ({ ...state, "postal-code": abbrState(state.State, 'abbr'), value: state[`winner${year || 2016}`] == (candidateGOP) ? 0 : 1 }));
 
-  console.log("Year:");
-  console.log(year);
+  // console.log("Year:");
+  // console.log(year);
 
   const config = {
     title: {

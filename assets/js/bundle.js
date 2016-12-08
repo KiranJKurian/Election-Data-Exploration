@@ -72034,8 +72034,8 @@
 	    return _extends({}, state, { "postal-code": (0, _abbrState2.default)(state.State, 'abbr'), value: state['winner' + (year || 2016)] == candidateGOP ? 0 : 1 });
 	  });
 
-	  console.log("Year:");
-	  console.log(year);
+	  // console.log("Year:");
+	  // console.log(year);
 
 	  var config = {
 	    title: {
