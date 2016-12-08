@@ -77802,6 +77802,10 @@
 
 	var _Card = __webpack_require__(521);
 
+	var _FlatButton = __webpack_require__(579);
+
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
 	var _tests = __webpack_require__(757);
 
 	var _tests2 = _interopRequireDefault(_tests);
@@ -77823,13 +77827,9 @@
 	        'Tests'
 	      ),
 	      _react2.default.createElement(
-	        _Card.CardText,
+	        _Card.CardActions,
 	        null,
-	        _react2.default.createElement(
-	          'article',
-	          null,
-	          'Tests'
-	        )
+	        _react2.default.createElement(_FlatButton2.default, { onClick: _tests2.default, label: 'Test' })
 	      )
 	    )
 	  );
