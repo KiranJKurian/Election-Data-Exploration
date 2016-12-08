@@ -61,9 +61,12 @@ export const showdb = (res) => {
     }
     else{
       var final = [];
+      console.log("Result: \n");
       console.log(result);
       for(var i = 0; i < result.length; i++){
-          connection.query(`SELECT * FROM ${result[i]}`, function(err, rows){
+          //console.log(result[i].Tables_in_election_data);
+          connection.query(`SELECT * FROM ${result[i].Tables_in_election_data}`, function(err, rows){
+            //console.log(rows);
             if(err){
               console.log(err);
               res.send(JSON.stringify({ error: 'Bad Query' }));

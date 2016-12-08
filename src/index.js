@@ -43,8 +43,8 @@ app.post('/query', function(req, res){
 app.get('/db', function(req, res){
   var result = queries.showdb(res);
 
-  res.render(result);
-  
+  //res.render(result);
+
 });
 
 
