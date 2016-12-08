@@ -61,8 +61,8 @@ export const showdb = (res) => {
     }
     else{
       var final = [];
-      console.log("Result: \n");
-      console.log(result);
+      //console.log("Result: \n");
+      //console.log(result);
       for(var i = 0; i < result.length; i++){
           //console.log(result[i].Tables_in_election_data);
           connection.query(`SELECT * FROM ${result[i].Tables_in_election_data}`, function(err, rows){
@@ -118,18 +118,18 @@ export const getStateAnalysisCustomQuery = (body) => {
   let query;
   if(year == 2016){
     if(highlow == "less"){
-      query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
+      query = `SELECT DISTINCT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
       return query;
     }else{
-      query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
+      query = `SELECT DISTINCT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
       return query;
     }
   }
   if(highlow == "less") {
-    query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
+    query = `SELECT DISTINCT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}<${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
   }
   else{
-    query = `SELECT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
+    query = `SELECT DISTINCT wt.State FROM ${table} st, state_winners wt WHERE st.State = wt.State AND st.${attribute}>${number} AND wt.Year = ${year} AND wt.Winner = '${party}'`;
   }
   console.log("Query:");
   console.log(query);
