@@ -60,33 +60,31 @@ export const showdb = (res) => {
       res.send(JSON.stringify({ error: 'Bad Query' }));
     }
     else{
-      var final = new Array(result.length);
-      console.log("Result: \n");
+      var final = [];
+      //console.log("Result: \n");
       //console.log(result);
       let j = 0;
       for(var i = 0; i < result.length; i++){
-          //console.log(result[i].Tables_in_election_data);
-          
+        let x = result[i].Tables_in_election_data;
           connection.query(`SELECT * FROM ${result[i].Tables_in_election_data}`, function(err, rows){
-            //console.log(rows);
-            console.log("j is "+j);
+           
             if(err){
               console.log(err);
               res.send(JSON.stringify({ error: 'Bad Query' }));
             }
             else{
-              final[j] = rows;
-              
+              //console.log(x);
+              var tempObj = {};
+              tempObj[x] = rows;
+              final[j] = tempObj;
               j++;
-            }
-            if(j == result.length){
+              if(j == result.length){
+              //console.log(final);
               res.send(JSON.stringify(final));
+             }
             }
-          });
-          //console.log(final[i]);
+          });    
       }
-      //console.log("Final\n" +final);
-      
     }
   });
 };
