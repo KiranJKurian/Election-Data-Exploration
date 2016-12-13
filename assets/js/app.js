@@ -8,6 +8,7 @@ import { createStore } from 'redux'
 import reducers from './reducers'
 import StateAnalysis from './components/StateAnalysis';
 import USAMap from './components/USAMap';
+import Tables from './components/Tables';
 import Test from './tests/Test';
 
 let store = createStore(reducers);
@@ -17,6 +18,7 @@ const App = (props) => {
     <div>
       <USAMap />
       <StateAnalysis />
+      <Tables />
     </div>
   );
 }
