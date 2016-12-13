@@ -110,7 +110,7 @@ StateAnalysis = reduxForm({
       'Number': 1,
     },
   },
-})(StateAnalysis)
+})(StateAnalysis);
 
 const mapStateToProps = (state, ownProps) => {
   return {
