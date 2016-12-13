@@ -10,7 +10,7 @@ import { gotTableData } from '../actions/Tables';
 
 const Tables = (props) => {
   const { tableData, gotTableData } = props;
-  const data = JSON.parse(tableData);
+  const data = tableData || JSON.parse(tableData);
   const getData = () => {
     $.ajax({
       url: "/db",
